@@ -1,0 +1,26 @@
+ant:
+<ant>
+  <mkdir dir="D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_redistribution" />
+  <mkdir dir="D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing" />
+</ant>
+mcc -W 'dotnet:Impulse2Thrust,Class1,0.0,private' -T link:lib -d D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing -v D:\项目0901\化推-考虑质量dll\Impulse2Thrust.m class{Class1:D:\项目0901\化推-考虑质量dll\Impulse2Thrust.m} 
+Compiler version: 5.1 (R2014a)
+Dependency analysis by REQUIREMENTS.
+[警告: Adding path "D:\项目0901\化推-考虑质量dll" to Compiler path instance.] 
+Parsing file "D:\项目0901\化推-考虑质量dll\Impulse2Thrust.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "D:\Program Files\MATLAB\R2014a\toolbox\compiler\deploy\deployprint.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "D:\Program Files\MATLAB\R2014a\toolbox\compiler\deploy\printdlg.m"
+	(Referenced from: "Compiler Command Line").
+Deleting 2 temporary MEX authorization files.
+Removing: 'C:\Users\wangh\AppData\Local\Temp\mathworks_tmp_3920_18016_3920.auth'.
+Removing: 'C:\Users\wangh\AppData\Local\Temp\mathworks_tmp_3920_24159_3920.auth'.
+Generating file "D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Class1Native.cs".
+Generating file "D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Class1.cs".
+Generating file "D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\readme.txt".
+Executing command: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /nologo /optimize /doc:"D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Impulse2Thrust.xml" /t:library /r:"D:\Program Files\MATLAB\R2014a\toolbox\dotnetbuilder\bin\win64\v2.0\MWArray.dll" /resource:"D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Impulse2Thrust.ctf" /out:"D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Impulse2Thrust.dll" "D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Class1.cs"Executing command: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /nologo /optimize /doc:"D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Impulse2ThrustNative.xml" /t:library /r:"D:\Program Files\MATLAB\R2014a\toolbox\dotnetbuilder\bin\win64\v2.0\MWArray.dll" /resource:"D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Impulse2Thrust.ctf" /out:"D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Impulse2ThrustNative.dll" "D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_testing\Class1Native.cs"
+Packaging...
+Creating the bundle...
+Web based installer created at D:\项目0901\化推-考虑质量dll\Impulse2Thrust\for_redistribution\MyAppInstaller_web.exe.
+Packaging complete.

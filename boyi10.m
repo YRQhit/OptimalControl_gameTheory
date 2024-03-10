@@ -1,0 +1,61 @@
+% 设置初始状态向量
+x0 = [1000; 0; 200; 0; 0; 0];
+
+% 设置时间范围和时间步长
+tspan = [0 10];
+dt = 0.01;
+
+% 设置目标状态为零状态
+x_target = [0; 0; 0; 0; 0; 0];
+
+% 定义反馈增益矩阵
+K = diag([1, 1, 1, 0.5, 0.5, 0.5]);
+
+% 初始化外部力向量
+F_ext = zeros(3, 1);
+
+% 使用 ode45 函数求解 CW 方程（包括外部力和控制输入）
+[t, x] = ode45(@(t,x) clohessy_wiltshire_external(t, x, F_ext), tspan, x0);
+
+% 控制循环
+for i = 1:length(t)
+    % 计算控制输入
+    u = -K * (x(i,:)' - x_target);
+
+    % 更新外部力
+    F_ext = u;
+
+    % 求解 CW 方程
+    dxdt = clohessy_wiltshire_external(t(i), x(i,:)', F_ext);
+    x(i,:) = x(i,:) + dxdt' * dt;
+end
+
+% 绘制结果
+figure;
+plot(t, x(:,1), 'r', t, x(:,2), 'g', t, x(:,3), 'b');
+legend('x', 'y', 'z');
+xlabel('时间');
+ylabel('状态');
+grid on;
+
+
+function dxdt = clohessy_wiltshire_external(t, x, F_ext)
+    % CW equations with external force
+    mu = 3.986004418e14; % Earth's gravitational parameter (m^3/s^2)
+    n = sqrt(mu / x(1)^3); % Mean motion
+
+    A = [0      0      0      1     0     0;
+         0      0      0      0     1     0;
+         0      0      0      0     0     1;
+         0      0      0      0     0    2*n;
+         0    -n^2     0      0     0     0;
+         0      0     3*n^2  -2*n   0     0];
+
+    B = [0  0  0;
+         0  0  0;
+         0  0  0;
+         1  0  0;
+         0  1  0;
+         0  0  1];
+    dxdt = A .* x + B.*F_ext;
+end
